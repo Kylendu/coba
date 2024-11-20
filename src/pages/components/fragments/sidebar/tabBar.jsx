@@ -5,7 +5,7 @@ import { XSquare } from "lucide-react";
 const TabBar = ({ tabs, activeTab, setActiveTab, closeTab }) => (
   <div className="h-8 bg-[#01111d] flex items-center px-4 border-b border-gray-800 overflow-x-auto">
     <AnimatePresence>
-      {tabs.map((tab) => (
+      {tabs?.map((tab) => (
         <motion.div
           key={tab.id}
           initial={{ opacity: 0, x: -20 }}
