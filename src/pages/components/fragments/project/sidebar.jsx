@@ -1,8 +1,8 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, FileIcon, FolderIcon, Mail, Phone } from "lucide-react";
+import { ChevronRight, FileIcon, FolderIcon } from "lucide-react";
 
-const Sidebar = ({ expandedFolders, toggleFolder, addTab }) => (
+const Sidebar = ({ expandedFolders = {}, toggleFolder, addTab }) => (
   <div className="w-64 border-r border-gray-800 flex-shrink-0 p-4 space-y-2">
     <div>
       <motion.button

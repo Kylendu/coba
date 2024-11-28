@@ -1,10 +1,10 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Content = ({ tabs, activeTab, getFileContent }) => (
+const Content = ({ tabs = [], activeTab, getFileContent }) => (
   <div className="p-4 font-mono text-sm">
     <AnimatePresence mode="wait">
-      {tabs.map(
+      {tabs?.map(
         (tab) =>
           activeTab === tab.id && (
             <motion.div
