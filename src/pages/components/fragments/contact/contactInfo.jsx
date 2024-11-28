@@ -1,4 +1,4 @@
-const ContactInfo = ({ formData }) => {
+const ContactInfo = ({ formData = {} }) => {
   return (
     <div className="space-y-2">
       <p className="text-gray-500">{`// Contact information`}</p>
