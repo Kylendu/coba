@@ -111,7 +111,7 @@ const IDE = () => {
           "University: Universitas Trunojoyo Madura",
           "Major: Informatics Engineering",
           "Batch: 2023",
-          "Focus Areas: Web Development and Machine Learning",
+          "Focus Areas: Web Development Full-Stack",
         ],
       },
     };
@@ -119,7 +119,7 @@ const IDE = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#011627] text-gray-300 md:flex block">
+    <div className="min-h-screen text-gray-300 md:flex block">
       <Sidebar
         expandedFolders={expandedFolders}
         toggleFolder={toggleFolder}
