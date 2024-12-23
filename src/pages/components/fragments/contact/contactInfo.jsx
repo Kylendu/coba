@@ -3,29 +3,28 @@ import { motion } from "framer-motion";
 const ContactInfo = ({ formData = {} }) => {
   const containerVariants = {
     hidden: {
-      rotateX: 90,
       opacity: 0,
+      y: 30,
     },
     show: {
-      rotateX: 0,
       opacity: 1,
+      y: 0,
       transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-        staggerChildren: 0.2,
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+        staggerChildren: 0.15,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { scale: 0, opacity: 0 },
+    hidden: { opacity: 0, x: -20 },
     show: {
-      scale: 1,
       opacity: 1,
+      x: 0,
       transition: {
-        type: "spring",
-        stiffness: 200,
+        duration: 0.4,
+        ease: "easeOut",
       },
     },
   };

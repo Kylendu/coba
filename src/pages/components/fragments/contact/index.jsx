@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "emailjs-com";
 import Notification from "./notification";
 import ContactInfo from "./contactInfo";
 import ContactForm from "./contactForm";
@@ -14,41 +15,58 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormData({
-      name: e.target.name.value,
-      email: e.target.email.value,
-      message: e.target.message.value,
-    });
-
-    setShowNotif(true);
+    const { name, email, message } = e.target;
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        {
+          name: name.value,
+          email: email.value,
+          message: message.value,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          setFormData({
+            name: name.value,
+            email: email.value,
+            message: message.value,
+          });
+          setShowNotif(true);
+          setTimeout(() => setShowNotif(false), 3000);
+        },
+        (err) => {
+          console.error("FAILED...", err);
+          alert("Failed to send message, please try again.");
+        }
+      );
     e.target.reset();
-    setTimeout(() => {
-      setShowNotif(false);
-    }, 3000);
   };
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.6,
-        ease: "easeOut",
+        ease: [0.22, 1, 0.36, 1],
       }}
       className="min-h-screen flex justify-center items-center"
     >
       <div className="container mx-auto px-4 py-8">
-        <AnimatePresence>
-          <Notification show={showNotif} />
+        <AnimatePresence mode="wait">
+          {showNotif && <Notification show={showNotif} />}
         </AnimatePresence>
 
         <motion.div
-          initial={{ y: 100 }}
-          animate={{ y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 20,
+            duration: 0.5,
+            delay: 0.3,
           }}
           className="text-white space-y-6"
         >
