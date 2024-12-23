@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import CertificateDisplay from "./certificateDisplay";
 
 const Content = ({ tabs, activeTab, getFileContent }) => (
   <div className="p-4 font-mono text-sm">
@@ -15,27 +16,35 @@ const Content = ({ tabs, activeTab, getFileContent }) => (
               transition={{ duration: 0.2 }}
               className="flex"
             >
-              <div className="text-gray-600 pr-4 text-right select-none">
-                {Array.from(
-                  { length: getFileContent(tab.content).content.length + 2 },
-                  (_, i) => (
-                    <div key={i + 1}>{i + 1}</div>
-                  )
-                )}
-              </div>
-              <div className="text-gray-300">
-                <div>{getFileContent(tab.content).title}</div>
-                {getFileContent(tab.content).content.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 text-blue-400"
-                  >
-                    * {item.icon && <span>{item.icon}</span>}{" "}
-                    <span>{item.name || item}</span>{" "}
+              {tab.content === "certificates" ? (
+                <CertificateDisplay />
+              ) : (
+                <>
+                  <div className="text-gray-600 pr-4 text-right select-none">
+                    {Array.from(
+                      {
+                        length: getFileContent(tab.content).content.length + 2,
+                      },
+                      (_, i) => (
+                        <div key={i + 1}>{i + 1}</div>
+                      )
+                    )}
                   </div>
-                ))}
-                <div> */</div>
-              </div>
+                  <div className="text-gray-300">
+                    <div>{getFileContent(tab.content).title}</div>
+                    {getFileContent(tab.content).content.map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-3 text-blue-400"
+                      >
+                        * {item.icon && <span>{item.icon}</span>}{" "}
+                        <span>{item.name || item}</span>{" "}
+                      </div>
+                    ))}
+                    <div> */</div>
+                  </div>
+                </>
+              )}
             </motion.div>
           )
       )}

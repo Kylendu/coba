@@ -1,13 +1,42 @@
+import { motion } from "framer-motion";
+
 const ContactForm = ({ onSubmit }) => {
+  const formVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div className="space-y-2">
-      <p className="text-gray-500">{`// Send me a message`}</p>
-      <div className="text-[#4D5BCE]">
+    <motion.div
+      variants={formVariants}
+      initial="hidden"
+      animate="show"
+      className="space-y-2"
+    >
+      <motion.p
+        variants={itemVariants}
+        className="text-gray-500"
+      >{`// Send me a message`}</motion.p>
+      <motion.div variants={itemVariants} className="text-[#4D5BCE]">
         <span className="text-[#c161e4]">function </span>
         <span className="text-[#5565E8]">sendMessage</span>
         <span className="text-slate-300">() {"{"}</span>
-      </div>
-      <form onSubmit={onSubmit} className="ml-4 space-y-4">
+      </motion.div>
+      <motion.form
+        variants={itemVariants}
+        onSubmit={onSubmit}
+        className="ml-4 space-y-4"
+      >
         <input
           type="text"
           name="name"
@@ -34,9 +63,9 @@ const ContactForm = ({ onSubmit }) => {
         >
           Execute
         </button>
-      </form>
+      </motion.form>
       <span className="text-slate-300">{"}"}</span>
-    </div>
+    </motion.div>
   );
 };
 

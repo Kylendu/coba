@@ -42,10 +42,16 @@ const Sidebar = ({ expandedFolders = {}, toggleFolder, addTab }) => (
               <FileIcon size={16} />
               <span className="opacity-70">📄 Skills</span>
             </motion.div>
-            <div className="flex items-center gap-2">
+            <motion.div
+              className="flex items-center gap-2 cursor-pointer hover:text-white"
+              whileHover={{ x: 2 }}
+              onClick={() =>
+                addTab("certificates", "Certificates", "certificates")
+              }
+            >
               <FolderIcon size={16} />
-              <span className="opacity-70">📂 interests</span>
-            </div>
+              <span className="opacity-70">📂 Certificates</span>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -77,9 +83,7 @@ const Sidebar = ({ expandedFolders = {}, toggleFolder, addTab }) => (
             <motion.div
               className="flex items-center gap-2 cursor-pointer hover:text-white"
               whileHover={{ x: 2 }}
-              onClick={() =>
-                addTab("high-school", "High School", "high-school")
-              }
+              onClick={() => addTab("high-school", "HighSchool", "high-school")}
             >
               <FileIcon size={16} />
               <span className="opacity-70">high-school</span>

@@ -28,23 +28,35 @@ const ContactSection = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeOut",
+      }}
+      className="min-h-screen flex justify-center items-center"
+    >
       <div className="container mx-auto px-4 py-8">
         <AnimatePresence>
           <Notification show={showNotif} />
         </AnimatePresence>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+          }}
           className="text-white space-y-6"
         >
           <ContactInfo formData={formData} />
           <ContactForm onSubmit={handleSubmit} />
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
