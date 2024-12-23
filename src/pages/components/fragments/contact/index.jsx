@@ -25,7 +25,7 @@ const ContactSection = () => {
           email: email.value,
           message: message.value,
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        "IWbJi61y2ImX6-lKU"
       )
       .then(
         (response) => {
