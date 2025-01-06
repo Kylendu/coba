@@ -1,6 +1,6 @@
 import React from "react";
-import Game from "./fragments/mainIndex/game";
-import IntroSection from "./fragments/mainIndex/introSection";
+import Game from "../snakeGame";
+import IntroSection from "./introSection";
 
 const Profile = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import CertificateDisplay from "./certificateDisplay";
+import CertificateDisplay from "../certificate/certificateDisplay";
 
 const Content = ({ tabs, activeTab, getFileContent }) => (
   <div className="p-4 font-mono text-sm">

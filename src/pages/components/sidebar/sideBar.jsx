@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, FileIcon, FolderIcon, Mail, Phone } from "lucide-react";
+import { ChevronRight, Mail, Phone } from "lucide-react";
+import { FaCode, FaMarkdown } from "react-icons/fa";
 
 const Sidebar = ({ expandedFolders = {}, toggleFolder, addTab }) => (
   <div className="w-64 md:border-r md:flex block flex-col border-gray-800 flex-shrink-0 p-4 space-y-2">
@@ -31,16 +32,16 @@ const Sidebar = ({ expandedFolders = {}, toggleFolder, addTab }) => (
               whileHover={{ x: 2 }}
               onClick={() => addTab("about", "About", "about")}
             >
-              <FileIcon size={16} />
-              <span className="opacity-70">📄 bio</span>
+              <FaMarkdown size={16} className="text-blue-400" />
+              <span className="opacity-70">About.md</span>
             </motion.div>
             <motion.div
               className="flex items-center gap-2 cursor-pointer hover:text-white"
               whileHover={{ x: 2 }}
               onClick={() => addTab("skills", "Skills", "skills")}
             >
-              <FileIcon size={16} />
-              <span className="opacity-70">📄 Skills</span>
+              <FaMarkdown size={16} className="text-blue-400" />
+              <span className="opacity-70">Skills.md</span>
             </motion.div>
             <motion.div
               className="flex items-center gap-2 cursor-pointer hover:text-white"
@@ -49,8 +50,8 @@ const Sidebar = ({ expandedFolders = {}, toggleFolder, addTab }) => (
                 addTab("certificates", "Certificates", "certificates")
               }
             >
-              <FolderIcon size={16} />
-              <span className="opacity-70">📂 Certificates</span>
+              <FaMarkdown size={16} className="text-blue-400" />
+              <span className="opacity-70">Certificates.md</span>
             </motion.div>
           </motion.div>
         )}
@@ -85,16 +86,16 @@ const Sidebar = ({ expandedFolders = {}, toggleFolder, addTab }) => (
               whileHover={{ x: 2 }}
               onClick={() => addTab("high-school", "HighSchool", "high-school")}
             >
-              <FileIcon size={16} />
-              <span className="opacity-70">high-school</span>
+              <FaMarkdown size={16} className="text-blue-400" />
+              <span className="opacity-70">High-school.md</span>
             </motion.div>
             <motion.div
               className="flex items-center gap-2 cursor-pointer hover:text-white"
               whileHover={{ x: 2 }}
               onClick={() => addTab("university", "University", "university")}
             >
-              <FileIcon size={16} />
-              <span className="opacity-70">university</span>
+              <FaMarkdown size={16} className="text-blue-400" />
+              <span className="opacity-70">University.md</span>
             </motion.div>
           </motion.div>
         )}

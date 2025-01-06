@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "./fragments/sidebar/sideBar";
-import TabBar from "./fragments/sidebar/tabBar";
-import Content from "./fragments/sidebar/content";
+import Sidebar from "./sideBar";
+import TabBar from "./tabBar";
+import Content from "./content";
 import { FaPython } from "react-icons/fa";
 import {
   RiNextjsFill,

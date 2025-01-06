@@ -1,6 +1,7 @@
 import { Divide as Hamburger } from "hamburger-react";
 import { useState } from "react";
 import Link from "next/link";
+import { FaCode } from "react-icons/fa";
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +31,9 @@ const HamburgerMenu = () => {
         } transition-all duration-500`}
       >
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-lynch-600 text-2xl">Imamgg</h1>
+          <h1 className="text-lynch-600 text-xl flex items-center gap-1">
+            Imamgg <FaCode size={16} />
+          </h1>
         </div>
 
         <ul className="flex flex-col gap-6 text-lg">
@@ -38,10 +41,13 @@ const HamburgerMenu = () => {
             <li key={index}>
               <Link
                 href={item.link}
-                className="hover:text-lynch-400 transition-all duration-300"
+                className="group relative inline-block"
                 onClick={() => setIsOpen(false)}
               >
-                {item.title}
+                <span className="flex items-center gap-3 text-lynch-600 hover:text-lynch-400 transition-all duration-300">
+                  {item.title}
+                </span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-lynch-400 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </li>
           ))}

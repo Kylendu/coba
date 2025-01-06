@@ -1,5 +1,5 @@
-import Footer from "./components/fragments/footer";
-import Navbar from "./components/fragments/navbar";
+import Footer from "./components/footer";
+import Navbar from "./components/navbar";
 import HeroParallax from "./components/ui/heroParallax";
 
 const Projects = () => {

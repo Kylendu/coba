@@ -11,39 +11,36 @@ const ContactSection = () => {
     email: "",
     message: "",
   });
-  const [showNotif, setShowNotif] = useState(false);
+  const [notification, setNotification] = useState({
+    show: false,
+    type: "success",
+  });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, message } = e.target;
-    emailjs
-      .send(
+    try {
+      const templateParams = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        message: e.target.message.value,
+      };
+
+      emailjs.init("IWbJi61y2ImX6-lKU");
+      await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        {
-          name: name.value,
-          email: email.value,
-          message: message.value,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          setFormData({
-            name: name.value,
-            email: email.value,
-            message: message.value,
-          });
-          setShowNotif(true);
-          setTimeout(() => setShowNotif(false), 3000);
-        },
-        (err) => {
-          console.error("FAILED...", err);
-          alert("Failed to send message, please try again.");
-        }
+        templateParams
       );
-    e.target.reset();
+
+      setFormData(templateParams);
+      setNotification({ show: true, type: "success" });
+      e.target.reset();
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      setNotification({ show: true, type: "error" });
+    } finally {
+      setTimeout(() => setNotification({ show: false, type: "success" }), 3000);
+    }
   };
 
   return (
@@ -58,7 +55,9 @@ const ContactSection = () => {
     >
       <div className="container mx-auto px-4 py-8">
         <AnimatePresence mode="wait">
-          {showNotif && <Notification show={showNotif} />}
+          {notification.show && (
+            <Notification show={notification.show} type={notification.type} />
+          )}
         </AnimatePresence>
 
         <motion.div
