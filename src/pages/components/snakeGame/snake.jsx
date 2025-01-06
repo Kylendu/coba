@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 
-const Snake = ({ snake, CELL_SIZE }) => {
+const Snake = ({ snake = [], CELL_SIZE }) => {
+  if (!snake || !Array.isArray(snake)) return null;
+
   return (
     <>
       {snake.map(([x, y], i) => (

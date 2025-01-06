@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import GameBoard from "./GameBoard";
+import GameBoard from "./gameBoard";
 import Controls from "./controls";
 import FoodCounter from "./foodCounter";
 

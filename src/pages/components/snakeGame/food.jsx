@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const Food = ({ food, CELL_SIZE }) => {
+const Food = ({ food = [], CELL_SIZE }) => {
   return (
     <motion.div
       initial={{ scale: 0 }}
