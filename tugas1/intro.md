@@ -1,6 +1,6 @@
 # Welcome to your Jupyter Book
 
-Anjay Mabar
+Hallo aku Rizal Fadillah
 
 ```{tableofcontents}
 ```
